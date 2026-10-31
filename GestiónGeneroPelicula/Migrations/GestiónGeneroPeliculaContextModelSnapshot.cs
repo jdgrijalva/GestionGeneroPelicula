@@ -20,6 +20,28 @@ namespace GestiónGeneroPelicula.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("GestiónGeneroPelicula.Models.Genero", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genero");
+                });
+
             modelBuilder.Entity("GestiónGeneroPelicula.Models.Pelicula", b =>
                 {
                     b.Property<int>("Id")
@@ -36,6 +58,9 @@ namespace GestiónGeneroPelicula.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("GeneroId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -43,7 +68,25 @@ namespace GestiónGeneroPelicula.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GeneroId");
+
                     b.ToTable("Pelicula");
+                });
+
+            modelBuilder.Entity("GestiónGeneroPelicula.Models.Pelicula", b =>
+                {
+                    b.HasOne("GestiónGeneroPelicula.Models.Genero", "Genero")
+                        .WithMany("Peliculas")
+                        .HasForeignKey("GeneroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genero");
+                });
+
+            modelBuilder.Entity("GestiónGeneroPelicula.Models.Genero", b =>
+                {
+                    b.Navigation("Peliculas");
                 });
 #pragma warning restore 612, 618
         }

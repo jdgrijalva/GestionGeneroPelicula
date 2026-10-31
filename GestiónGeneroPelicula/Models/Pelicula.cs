@@ -20,5 +20,11 @@ namespace GestiónGeneroPelicula.Models
         [Range(1, 500, ErrorMessage = "La duración debe estar entre 1 y 500 minutos.")]
         [Display(Name = "Duración (minutos)")]
         public int Duracion { get; set; }
+
+        [Range(1, int.MaxValue, ErrorMessage = "Debe seleccionar un género.")]
+        [Display(Name = "Género")]
+        public int GeneroId { get; set; }
+
+        public Genero? Genero { get; set; }
     }
 }
