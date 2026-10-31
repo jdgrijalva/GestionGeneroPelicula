@@ -1,7 +1,7 @@
-# SistemaGestionEscolar
+# GestionGeneroPelicula
 
 ## Nombre del sistema
-Sistema de Gestión Escolar
+Gestion Genero Pelicula
 
 ## Nombre de los integrantes
 Joustin Damián Grijalva Mármol
