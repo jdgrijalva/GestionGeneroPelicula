@@ -30,6 +30,16 @@
                 <input asp-for="Duracion" class="form-control" />
                 <span asp-validation-for="Duracion" class="text-danger"></span>
             </div>
+
+            <!-- COMPONENTE AUTÓNOMO: Lista desplegable con nombres de Géneros -->
+            <div class="form-group mb-3">
+                <label asp-for="GeneroId" class="control-label">Género</label>
+                <select asp-for="GeneroId" class="form-control" asp-items="ViewBag.GeneroId">
+                    <option value="">-- Seleccione un Género --</option>
+                </select>
+                <span asp-validation-for="GeneroId" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
